@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "../img/fullLogo.png";
+import logo from "../../img/fullLogo.png";
 
 class FullLogo extends Component {
   state = {};

@@ -7,19 +7,17 @@ class Form extends Component {
       <form>
         <input
           type="email"
-          className="form-control"
           placeholder="email"
         ></input>
         <input
           type="password"
-          className="form-control"
           placeholder="password"
         ></input>
-        <button className="btn btn-primary m-2">Log In</button>
-        <button className="btn btn-primary m-2">Register</button>
+        <button onSubmit={handleLogIn}>Log In</button>
+        <button onSubmit={handleSignUp}>Register</button>
       </form>
     );
   }
 }
 
-export default Form;
+export default  Form;

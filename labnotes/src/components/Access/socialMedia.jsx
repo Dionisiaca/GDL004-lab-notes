@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Google from "../img/google.png";
-import Github from "../img/github.png";
+import Google from "../../img/google.png";
+import Github from "../../img/github.png";
 
 class SocialMedia extends Component {
   state = {};
