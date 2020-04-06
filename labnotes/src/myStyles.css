@@ -1,0 +1,38 @@
+.root {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../labnotes/src/img/background.png");
+}
+
+.input {
+  width: 500px;
+  height: 60px;
+  background-color: transparent;
+  border: none;
+  border-bottom: solid 2px black;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 30px;
+  line-height: 35px;
+  letter-spacing: 0.1em;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.button {
+  width: 261px;
+  height: 78px;
+  left: 143px;
+  top: 717px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 34px;
+  line-height: 40px;
+  letter-spacing: 0.1em;
+  color: #000000;
+  border: none;
+}
+
+.smallTxt {
+  font-family: Lato;
+  font-size: 30px;
+}

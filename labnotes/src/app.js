@@ -11,6 +11,7 @@ const App = () => {
       <Router>
         <div>
           <PrivateRoute exact path="/home" component={Home} />
+          <Route exact path="/" component={Access} />
           <Route exact path="/access" component={Access} />
         </div>
       </Router>

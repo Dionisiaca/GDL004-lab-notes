@@ -6,7 +6,7 @@ class FullLogo extends Component {
   render() {
     return (
       <React.Fragment>
-        <img src={logo} alt="Logo" />;
+        <img src={logo} alt="Logo" />
       </React.Fragment>
     );
   }
