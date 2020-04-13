@@ -2,6 +2,22 @@
   width: 100vw;
   height: 100vh;
   background-image: url("../../labnotes/src/img/background.png");
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  text-align: center;
+}
+
+.logo {
+  margin-bottom: 50px;
 }
 
 .input {
@@ -10,7 +26,7 @@
   background-color: transparent;
   border: none;
   border-bottom: solid 2px black;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   font-size: 30px;
   line-height: 35px;
   letter-spacing: 0.1em;
@@ -24,7 +40,7 @@
   height: 78px;
   left: 143px;
   top: 717px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   font-size: 34px;
   line-height: 40px;
   letter-spacing: 0.1em;
@@ -32,7 +48,21 @@
   border: none;
 }
 
+.accessBtns {
+  width: 580px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .smallTxt {
   font-family: Lato;
   font-size: 30px;
+}
+
+.socialMedia {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

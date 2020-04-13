@@ -1,77 +1,55 @@
-import FullLogo from "./fullLogo";
-import SocialMedia from "./socialMedia";
-import React, { useCallback, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { withRouter, Redirect } from "react-router";
 import firebaseConfig from "firebase";
 import { AuthContext } from "../../auth";
-import "../../myStyles.css";
-import background from "../../img/background.png";
+import SocialMedia from "./socialMedia";
+import Header from "../../styles/header";
+import Input from "../../styles/input";
+import Button from "../../styles/button";
+import Div from "../../styles/div";
+import DivSecondary from "../../styles/divSecondary";
+import P from "../../styles/p";
 
-const Access = ({ history }) => {
-  const handleAccess = useCallback(
-    async (event) => {
-      event.preventDefault();
-      const { email, password } = event.target.elements;
-      const submitType = document
-        .getElementById("accessForm")
-        .getAttribute("value");
-      console.log(submitType);
-      if (submitType == "logInBtn") {
-        try {
-          await firebaseConfig
-            .auth()
-            .signInWithEmailAndPassword(email.value, password.value);
-          console.log("you logged in!");
-          history.push("/home");
-        } catch (error) {
-          alert(error);
-        }
-      } else if (submitType == "SignUpBtn") {
-        try {
-          await firebaseConfig
-            .auth()
-            .createUserWithEmailAndPassword(email.value, password.value);
-          console.log("you signed up!");
-          history.push("/home");
-        } catch (error) {
-          alert(error);
-        }
-      }
-    },
-    [history]
-  );
-  /*const handleSignUp = useCallback(
-    async (event) => {
-      event.preventDefault();
-      const { email, password } = event.target.elements;
+const Access = () => {
+  const [input, setInput] = useState({ email: "", password: "" });
+  const handleInputChange = (event) => {
+    setInput({ ...input, [event.target.name]: event.target.value });
+  };
+  const handleAccess = (event) => {
+    event.preventDefault();
+    if (event.target.name === "logInBtn") {
       try {
-        await firebaseConfig
+        firebaseConfig
           .auth()
-          .createUserWithEmailAndPassword(email.value, password.value);
-        //console.log("you signed up!");
-        history.push("/home");
+          .signInWithEmailAndPassword(input.email, input.password);
+        //.then((user) => {});
       } catch (error) {
         alert(error);
       }
-    },
-    [history]
-  );
-
-  const handleLogIn = useCallback(
-    async (event) => {
-      event.preventDefault();
-      const { email, password } = event.target.elements;
+    } else if (event.target.name === "SignUpBtn") {
       try {
-        await firebaseConfig
+        firebaseConfig
           .auth()
-          .signInWithEmailAndPassword(email.value, password.value);
-        history.push("/home");
+          .createUserWithEmailAndPassword(input.email, input.password);
+        //.then((user) => {});
       } catch (error) {
-        alert(error);
+        const errorCode = error.code;
+        switch (errorCode) {
+          case "auth/weak-password":
+            console.log("*Password must contain more than 6 characters");
+            break;
+          case "auth/email-already-in-use":
+            console.log("*Email already in use in another account");
+            break;
+          case "auth/invalid-email":
+            console.log("*Use a valid email");
+            break;
+          default:
+            console.log("*Something went wrong. Try again!");
+        }
       }
-    },
-    [history]
-  );*/
+    }
+  };
 
   const { currentUser } = useContext(AuthContext); //using auth context
 
@@ -80,49 +58,49 @@ const Access = ({ history }) => {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexFlow: "column",
-      }}
-    >
-      <FullLogo />
-      <form id="accessForm" onSubmit={handleAccess}>
-        <input
+    <Div primary>
+      <Header>Welcome back!</Header>
+      <form id="accessForm">
+        <div id="errorMsg"></div>
+        <P primary>email</P>
+        <Input
           name="email"
           type="email"
-          placeholder="email"
+          placeholder="name@email.com"
           className="input"
-        ></input>
-        <input
+          value={input.email}
+          onChange={handleInputChange}
+        ></Input>
+        <P primary>password</P>
+        <Input
           name="password"
           type="password"
-          placeholder="password"
+          placeholder="• • • • • •"
           className="input"
-        ></input>
-        <button
-          type="submit"
-          name="accessBtn"
-          value="logInBtn"
-          className="button"
-          style={{ color: "FED1A7" }}
-        >
-          Log In
-        </button>
-        <button
-          type="submit"
-          name="accessBtn"
-          value="SignUpBtn"
-          className={"button"}
-          style={{ color: "FFBE18" }}
-        >
-          Register
-        </button>
+          value={input.password}
+          onChange={handleInputChange}
+        ></Input>
+        <DivSecondary>
+          <button
+            type="submit"
+            name="logInBtn"
+            value="logInBtn"
+            onClick={handleAccess}
+          >
+            Log In
+          </button>
+          <button
+            type="submit"
+            name="SignUpBtn"
+            value="SignUpBtn"
+            onClick={handleAccess}
+          >
+            Sign Up
+          </button>
+        </DivSecondary>
       </form>
       <SocialMedia />
-    </div>
+    </Div>
   );
 };
 
