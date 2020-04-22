@@ -17,7 +17,8 @@ const Access = () => {
   };
   const handleAccess = (event) => {
     event.preventDefault();
-    if (event.target.name === "logInBtn") {
+
+    if (event.target.logInBtn.name === "logInBtn") {
       try {
         firebaseConfig
           .auth()
@@ -26,7 +27,7 @@ const Access = () => {
       } catch (error) {
         alert(error);
       }
-    } else if (event.target.name === "SignUpBtn") {
+    } else if (event.target.SignUpBtn.name === "SignUpBtn") {
       try {
         firebaseConfig
           .auth()
@@ -60,7 +61,7 @@ const Access = () => {
   return (
     <Div primary>
       <Header>Welcome back!</Header>
-      <form id="accessForm">
+      <form id="accessForm" onSubmit={handleAccess}>
         <div id="errorMsg"></div>
         <P primary>email</P>
         <Input
@@ -81,22 +82,22 @@ const Access = () => {
           onChange={handleInputChange}
         ></Input>
         <DivSecondary>
-          <button
+          <Button
             type="submit"
             name="logInBtn"
             value="logInBtn"
-            onClick={handleAccess}
+            //onClick={handleAccess}
           >
             Log In
-          </button>
-          <button
+          </Button>
+          <Button
             type="submit"
             name="SignUpBtn"
             value="SignUpBtn"
-            onClick={handleAccess}
+            //onClick={() => handleAccess('signUp')}
           >
             Sign Up
-          </button>
+          </Button>
         </DivSecondary>
       </form>
       <SocialMedia />

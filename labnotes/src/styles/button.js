@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default styled.h1`
+export default styled.button`
   width: 300px;
   height: 123px;
   font-family: Roboto;
