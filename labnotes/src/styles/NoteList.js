@@ -12,9 +12,27 @@ export const NoteList = styled.li`
   margin-bottom: 10px;
 `;
 
-export const NoteListDiv = styled.div`
-  max-width: 900px;
-  max-heigth: 250px;
-  padding: 20px 60px;
+export const NoteDiv = styled.div`
+  width: 100%;
   border-bottom: 1px solid #000000;
+  display: flex;
+  align-items: center;
+`;
+
+export const NoteContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0rem 1rem 5rem;
+  width: 650px;
+`;
+
+export const EditIcons = styled.img`
+  width: 35px;
+`;
+
+export const EditNoteDiv = styled.div`
+  width: 126px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 `;

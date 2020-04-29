@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import firebase from "firebase";
-import Note from "../../styles/note";
-import NoteBox from "../../styles/noteBox";
-import save from "../../img/save.png";
-import { NavBar, Icons } from "../../styles/Nav";
+import Note from "../styles/note";
+import NoteBox from "../styles/noteBox";
+import save from "../img/save.png";
+import { NavBar, Icons } from "../styles/Nav";
 
-const CreateNote = () => {
+const Edit = () => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
@@ -21,6 +21,7 @@ const CreateNote = () => {
       });
     }
   };
+
   return (
     <>
       <NavBar>
@@ -51,4 +52,4 @@ const CreateNote = () => {
   );
 };
 
-export default CreateNote;
+export default Edit;

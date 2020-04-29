@@ -2,13 +2,8 @@ import React, { useContext, useState } from "react";
 import { withRouter, Redirect } from "react-router";
 import firebaseConfig from "firebase";
 import { AuthContext } from "../../auth";
-import SocialMedia from "./socialMedia";
-import Header from "../../styles/header";
-import Input from "../../styles/input";
-import Button from "../../styles/button";
-import Div from "../../styles/div";
-import DivSecondary from "../../styles/divSecondary";
-import P from "../../styles/p";
+import SocialMedia from "./SocialMedia";
+import { Header, Div, P, Button, Input, ButtonsDiv } from "../../styles/Acess";
 
 const Access = () => {
   const [input, setInput] = useState({ email: "", password: "" });
@@ -59,7 +54,7 @@ const Access = () => {
   }
 
   return (
-    <Div primary>
+    <Div>
       <Header>Welcome back!</Header>
       <form id="accessForm" onSubmit={handleAccess}>
         <div id="errorMsg"></div>
@@ -81,8 +76,9 @@ const Access = () => {
           value={input.password}
           onChange={handleInputChange}
         ></Input>
-        <DivSecondary>
+        <ButtonsDiv>
           <Button
+            primary
             type="submit"
             name="logInBtn"
             value="logInBtn"
@@ -98,7 +94,7 @@ const Access = () => {
           >
             Sign Up
           </Button>
-        </DivSecondary>
+        </ButtonsDiv>
       </form>
       <SocialMedia />
     </Div>

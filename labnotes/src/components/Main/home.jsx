@@ -1,40 +1,75 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import * as firebase from "firebase/app";
-import firebaseConfig from "../../firebase";
 import Nav from "./Nav";
-import Note from "../../styles/note";
-import { NoteList, NoteListDiv } from "../../styles/NoteList";
+import {
+  NoteList,
+  NoteDiv,
+  EditIcons,
+  EditNoteDiv,
+  NoteContent,
+} from "../../styles/NoteList";
+import { Header, Div, Notes } from "../../styles/Home";
+import Delete from "../../img/delete.png";
+import Edit from "../../img/edit.png";
 
-function Home() {
-  const [notes, setNotes] = React.useState([]);
+const Home = () => {
+  const db = firebase.firestore();
+  const [notes, setNotes] = useState([]);
 
-  React.useEffect(() => {
-    const db = firebase.firestore();
+  useEffect(() => {
     db.collection("Notes")
       .get()
       .then((data) => {
-        setNotes(data.docs.map((doc) => doc.data()));
+        setNotes(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       });
   }, []);
 
+  const editNote = () => {
+    console.log("edit note");
+  };
+
+  const deleteNote = () => {
+    console.log("delete note");
+    //db.collection("Notes").onSnapshot((querySnapshot) => {
+    /*let changes = querySnapshot.docChanges();
+      changes.forEach((change) => {
+        if (change.type == "removed") {
+          let li = postList.querySelector("[data-id =" + change.doc.id + "]");
+          postList.removeChild(li);
+        }
+      });*/
+    //});
+  };
+
   return (
-    <>
-      <Nav />
-      <Note>
+    <Div>
+      <Header>My notes</Header>
+      <Notes>
         <ul>
           {notes.map((note) => (
-            <NoteListDiv>
-              <NoteList primary key={note.Title}>
-                {note.Title}
-              </NoteList>
-              <NoteList key={note.Text}> {note.Text}</NoteList>
-            </NoteListDiv>
+            <NoteDiv key={note.id}>
+              <NoteContent>
+                <NoteList primary>{note.Title || note.title}</NoteList>
+                <NoteList> {note.Text || note.text}</NoteList>
+              </NoteContent>
+              <EditNoteDiv>
+                <Link to="/edit">
+                  <EditIcons src={Edit} alt="Edit note" onClick={editNote} />
+                </Link>
+                <EditIcons
+                  src={Delete}
+                  alt="Delete note"
+                  onClick={deleteNote}
+                />
+              </EditNoteDiv>
+            </NoteDiv>
           ))}
         </ul>
-      </Note>
-      <button onClick={() => firebaseConfig.auth().signOut()}>Sign Out</button>
-    </>
+      </Notes>
+      <Nav />
+    </Div>
   );
-}
+};
 
 export default Home;
