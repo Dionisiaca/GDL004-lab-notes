@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/GDL004-lab-notes/static/js/main.f0dfd07c.chunk.js",
+    "main.js.map": "/GDL004-lab-notes/static/js/main.f0dfd07c.chunk.js.map",
+    "runtime-main.js": "/GDL004-lab-notes/static/js/runtime-main.a339e369.js",
+    "runtime-main.js.map": "/GDL004-lab-notes/static/js/runtime-main.a339e369.js.map",
+    "static/js/2.d41a2ea2.chunk.js": "/GDL004-lab-notes/static/js/2.d41a2ea2.chunk.js",
+    "static/js/2.d41a2ea2.chunk.js.map": "/GDL004-lab-notes/static/js/2.d41a2ea2.chunk.js.map",
+    "index.html": "/GDL004-lab-notes/index.html",
+    "precache-manifest.04da1f2d6590e83306d15c852137d0ee.js": "/GDL004-lab-notes/precache-manifest.04da1f2d6590e83306d15c852137d0ee.js",
+    "service-worker.js": "/GDL004-lab-notes/service-worker.js",
+    "static/js/2.d41a2ea2.chunk.js.LICENSE.txt": "/GDL004-lab-notes/static/js/2.d41a2ea2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a339e369.js",
+    "static/js/2.d41a2ea2.chunk.js",
+    "static/js/main.f0dfd07c.chunk.js"
+  ]
+}
